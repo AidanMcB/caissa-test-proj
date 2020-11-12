@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Securities List */
+.securities-list{
+  display: grid;
+  grid-template-columns:  10% 10% 60% 10% 10%;
+  grid-auto-rows: 35%;
+  row-gap: 15px;
+
+}
+/* Security Card */
+.security-card {
+  padding: 0 2% 0 2%;
+  justify-self: stretch;
+  border: 1px solid black;
+  grid-column: 3;
+  display: grid;
+  grid-template-columns: 25% 15% 15% 30% 15%;
+  grid-template-rows: 50% 50%
+}
+.security-card > h3 {
+  grid-row: 1;
+  justify-self: start;
+  align-self: end;
+  padding: 0;
+  margin: 0;
+}
+.security-card > p {
+  justify-self: start;
+  align-self: start;
+  margin: 0;
+  padding: 0;
+  grid-row: 2;
+}
+.security-card > p:nth-child(5){
+  grid-column: 5;
+  justify-self: center;
+}
