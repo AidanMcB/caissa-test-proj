@@ -47,11 +47,11 @@ code {
   grid-column: 5;
   justify-self: center;
 }
-.prices-link{
+.prices-link, .edit-link{
   text-decoration: underline;
 }
 /* Security Prices Modal */
-.prices-modal {
+.prices-modal, .security-modal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;

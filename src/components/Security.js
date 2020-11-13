@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
-import SecurityPrices from './SecurityPrices'
+import SecurityPricesModal from './SecurityPricesModal'
+import SecurityModal from './SecurityModal'
 
 export default function Security() {
 
-    const [isModalOpen, setModal] = useState(false)
+    const [isEditModalOpen, setEditModal] = useState(false)
+    const closeEditModal = () => {
+        setEditModal(false)
+    }
 
-    const closeModal = () => {
-        setModal(false)
+    const [isPricesModalOpen, setPricesModal] = useState(false)
+    const closePricesModal = () => {
+        setPricesModal(false)
     }
 
     const sampleSecurity = {
@@ -36,12 +41,16 @@ export default function Security() {
             <h3>{sampleSecurity.name}</h3>
             <p>{sampleSecurity.ISIN}</p>
             <p>{sampleSecurity.country}</p>
-            <p className="prices-link" onClick={() => setModal(true)}>Prices</p>
-            <p><a href="#">Edit</a></p>
-            <SecurityPrices show={isModalOpen}
-                closeModal={closeModal}>
+            <p className="prices-link" onClick={() => setPricesModal(true)}>Prices</p>
+            <p className="edit-link" onClick={() => setEditModal(true)}>Edit</p>
+            <SecurityPricesModal show={isPricesModalOpen}
+                closePricesModal={closePricesModal}>
                 {sampleSecurity}
-            </SecurityPrices>
+            </SecurityPricesModal>
+            <SecurityModal show={isEditModalOpen}
+                closeEditModal={closeEditModal}>
+                {sampleSecurity}
+            </SecurityModal>
         </div>
     )
 }

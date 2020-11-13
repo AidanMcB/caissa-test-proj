@@ -1,13 +1,12 @@
 import React from 'react';
 
-export default function SecurityPrices(props) {
+export default function SecurityPricesModal(props) {
 
     const prices = props.children.prices
-    console.log(prices)
+    
     if (props.show === false) {
         return null;
     }
-
     return (
         <div className="prices-modal">
             <div className="modal-content">
@@ -26,7 +25,7 @@ export default function SecurityPrices(props) {
                     <p>+ Add</p>
                 </div>
                 <div className="prices-close-div">
-                    <p className="prices-close-btn" onClick={() => props.closeModal()}>Close</p>
+                    <p className="prices-close-btn" onClick={() => props.closePricesModal()}>Close</p>
                 </div>
             </div>
         </div>
