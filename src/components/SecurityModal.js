@@ -15,7 +15,7 @@ export default function SecurityModal(props) {
         'Japan',
         'Iraq'
     ]
-
+    
     if (props.show === false) {
         return null
     }
@@ -23,19 +23,29 @@ export default function SecurityModal(props) {
         <div className="security-modal">
             <div className="modal-content">
                 <div className="top-security-wrapper">
-                <form className="security-form">
-                <label for="name">Name</label>
-                    <input type="text" id="name" name="name"></input>
-                <label for="ISIN">ISIN</label>
-                    <input type="text" id="ISIN" name="ISIN"></input>
-                <label for="country">Country</label>
-                    <select name="countries" id="countries">
-                        {countries.map( country => (
-                            <option value="country">{country}</option>
-                        ))}
-                    </select>
-    
-                </form>
+                    <header>Edit Security: Example</header>
+                    <form className="security-form">
+                        <div className="name-input">
+                            <label for="name">Name</label>
+                            <br/>
+                            <input type="text" id="name" name="name"></input>
+                        </div>
+                        <div className="ISIN-input">
+                            <label for="ISIN">ISIN</label>
+                            <br/>
+                            <input type="text" id="ISIN" name="ISIN"></input>
+                        </div>
+                        <div className="country-input">
+                            <label for="country">Country</label>
+                            <br/>
+                            <select name="countries" id="countries">
+                                {countries.map(country => (
+                                    <option value="country">{country}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                    </form>
 
                 </div>
                 <div className="security-close-div">

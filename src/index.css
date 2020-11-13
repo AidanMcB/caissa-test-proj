@@ -123,6 +123,24 @@ code {
   margin-right: 3%;
 }
 /* Security Add/Edit Modal */
+.security-modal > .modal-content{
+  width: 40%;
+}
+.top-security-wrapper {
+  padding: 3%;
+}
+.security-form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2%;
+}
+.name-input, .ISIN-input, .country-input{
+  width: 46%;
+  margin: 2%;
+}
+#countries, #name, #ISIN{
+ width: 98%;
+}
 .security-close-div{
   border-top: 1px solid black;
   display:flex;
