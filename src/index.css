@@ -63,13 +63,13 @@ code {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
+/* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 0px;
   border: 1px solid black;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 60%; 
 }
 
 .close:hover,
@@ -78,12 +78,42 @@ code {
   text-decoration: none;
   cursor: pointer;
 }
+.top-modal-wrapper {
+  padding: 5% 2% 0 5%;
+}
 .prices-div {
   display: grid;
   overflow: scroll;
-  height:300px;
-  grid-template-columns: 25% 25% 25% 25%
+  height: 125px;
+  margin-top: 2%;
+  grid-template-columns: 100%;
+  grid-auto-rows: 17%;
 }
+.price-row {
+  display: grid;
+  grid-template-columns: 40% 30% 15% 15%;
+  grid-auto-rows: 100%;
+}
+.price-row > p {
+  align-self: center;
+  justify-self: start;
+}
+/* dates */
+.price-row > p:nth-child(4n-3){
+ /* grid-column: 1/ span 1; */
+}
+/* prices */
+.price-row > p:nth-child(4n-2){
+  /* grid-column: 2/ span 1; */
+ }
+ /* eidt */
+ .price-row > p:nth-child(4n-1){
+  justify-self: end;
+ }
+ /* X */
+ .price-row > p:nth-child(4n+0){
+  justify-self: center
+ }
 .prices-close-div{
   border-top: 1px solid black;
   display:flex;
