@@ -122,3 +122,18 @@ code {
 .prices-close-btn{
   margin-right: 3%;
 }
+/* Security Add/Edit Modal */
+.security-close-div{
+  border-top: 1px solid black;
+  display:flex;
+}
+.delete-security-btn{
+  margin-left: 2%;
+}
+  .cancel-security-btn{
+  margin-left: auto;
+  margin-right: 3%;
+}
+.save-security-btn{
+  margin-right: 2%;
+}

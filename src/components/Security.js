@@ -4,6 +4,8 @@ import SecurityModal from './SecurityModal'
 
 export default function Security() {
 
+    
+
     const [isEditModalOpen, setEditModal] = useState(false)
     const closeEditModal = () => {
         setEditModal(false)
