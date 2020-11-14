@@ -4,7 +4,7 @@ import SecurityModal from './SecurityModal'
 
 export default function Security() {
 
-    
+
 
     const [isEditModalOpen, setEditModal] = useState(false)
     const closeEditModal = () => {
@@ -49,7 +49,8 @@ export default function Security() {
                 closePricesModal={closePricesModal}>
                 {sampleSecurity}
             </SecurityPricesModal>
-            <SecurityModal show={isEditModalOpen}
+            <SecurityModal 
+                show={isEditModalOpen}
                 closeEditModal={closeEditModal}>
                 {sampleSecurity}
             </SecurityModal>

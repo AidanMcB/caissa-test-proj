@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function SecurityModal(props) {
     //should have edit mode or add mode 
-    console.log(props)
+    //check if the prop passed was a single security
+    //possible by checking for a name attribute
+    console.log(props.children.name)
 
     const countries = [
         'Sweden',
@@ -23,19 +25,29 @@ export default function SecurityModal(props) {
         <div className="security-modal">
             <div className="modal-content">
                 <div className="top-security-wrapper">
-                <form className="security-form">
-                <label for="name">Name</label>
-                    <input type="text" id="name" name="name"></input>
-                <label for="ISIN">ISIN</label>
-                    <input type="text" id="ISIN" name="ISIN"></input>
-                <label for="country">Country</label>
-                    <select name="countries" id="countries">
-                        {countries.map( country => (
-                            <option value="country">{country}</option>
-                        ))}
-                    </select>
-    
-                </form>
+                    <header>Edit Security: Example</header>
+                    <form className="security-form">
+                        <div className="name-input">
+                            <label htmlFor="name">Name</label>
+                            <br/>
+                            <input type="text" id="name" name="name"></input>
+                        </div>
+                        <div className="ISIN-input">
+                            <label htmlFor="ISIN">ISIN</label>
+                            <br/>
+                            <input type="text" id="ISIN" name="ISIN"></input>
+                        </div>
+                        <div className="country-input">
+                            <label htmlFor="country">Country</label>
+                            <br/>
+                            <select name="countries" id="countries">
+                                {countries.map((country, id) => (
+                                    <option key={id} value="country">{country}</option>
+                                ))}
+                            </select>
+                        </div>
+
+                    </form>
 
                 </div>
                 <div className="security-close-div">
