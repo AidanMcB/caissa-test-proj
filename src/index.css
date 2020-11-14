@@ -17,7 +17,14 @@ code {
   grid-template-columns:  10% 10% 60% 10% 10%;
   grid-auto-rows: 35%;
   row-gap: 15px;
-
+}
+.add-security-btn{
+  padding: 0;
+  font-size: 1.2em;
+  height: 50%;
+  width: 20%;
+  grid-column: 3;
+  background-color: white;
 }
 /* Security Card */
 .security-card {

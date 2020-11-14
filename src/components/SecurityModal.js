@@ -4,7 +4,7 @@ export default function SecurityModal(props) {
     //should have edit mode or add mode 
     //check if the prop passed was a single security
     //possible by checking for a name attribute
-    console.log(props.children.name)
+    console.log(props.closeEditModal)
 
     const countries = [
         'Sweden',
@@ -18,7 +18,8 @@ export default function SecurityModal(props) {
         'Iraq'
     ]
 
-    if (props.show === false) {
+    //if edit or add has not been clicked, do not show the modal
+    if (props.showEdit === false || props.showAdd == false) {
         return null
     }
     return (
