@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function SecurityModal(props) {
     //should have edit mode or add mode 
-    console.log(props)
+    //check if the prop passed was a single security
+    //possible by checking for a name attribute
+    console.log(props.children.name)
 
     const countries = [
         'Sweden',
@@ -15,7 +17,7 @@ export default function SecurityModal(props) {
         'Japan',
         'Iraq'
     ]
-    
+
     if (props.show === false) {
         return null
     }
@@ -26,21 +28,21 @@ export default function SecurityModal(props) {
                     <header>Edit Security: Example</header>
                     <form className="security-form">
                         <div className="name-input">
-                            <label for="name">Name</label>
+                            <label htmlFor="name">Name</label>
                             <br/>
                             <input type="text" id="name" name="name"></input>
                         </div>
                         <div className="ISIN-input">
-                            <label for="ISIN">ISIN</label>
+                            <label htmlFor="ISIN">ISIN</label>
                             <br/>
                             <input type="text" id="ISIN" name="ISIN"></input>
                         </div>
                         <div className="country-input">
-                            <label for="country">Country</label>
+                            <label htmlFor="country">Country</label>
                             <br/>
                             <select name="countries" id="countries">
-                                {countries.map(country => (
-                                    <option value="country">{country}</option>
+                                {countries.map((country, id) => (
+                                    <option key={id} value="country">{country}</option>
                                 ))}
                             </select>
                         </div>
