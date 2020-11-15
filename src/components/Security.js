@@ -29,6 +29,7 @@ export default function Security(props) {
                 {security}
             </SecurityPricesModal>
             <SecurityModal 
+                editASecurity={props.editASecurity}
                 showEdit={isEditModalOpen}
                 closeEditModal={closeEditModal}>
                 {security}

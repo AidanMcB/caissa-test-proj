@@ -20,6 +20,15 @@ export default function SecuritiesList() {
         setSecurities([...securities, newSecurity])
         closeAddModal()
     }
+    //edit Security
+    const editASecurity = (e, updatedSecurityInfo, originalSecurity) => {
+        console.log(e, updatedSecurityInfo, originalSecurity )
+        e.preventDefault()
+        let editedSecurity = securities.find(sec => sec === originalSecurity)
+        let index = securities.indexOf(editedSecurity)
+        console.log(editedSecurity, index)
+
+    }
 
     //add Prices to a security 
     const addPrice = (e, security, newPrice) => {
@@ -34,7 +43,7 @@ export default function SecuritiesList() {
     return (
         <div className="securities-list">
             {securities.map( (security, index) => (
-                <Security key={index} security={security} addPrice={addPrice} />
+                <Security key={index} security={security} editASecurity={editASecurity} addPrice={addPrice} />
             ))}
             <button className="add-security-btn"
                 onClick={() => setAddModal(true)}>Add
