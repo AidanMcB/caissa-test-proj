@@ -39,8 +39,7 @@ export default function SecurityModal(props) {
             <div className="modal-content">
                 <div className="top-security-wrapper">
                     <header>Edit Security: Example</header>
-                    <form className="security-form"
-                    onSubmit={(e) => props.addASecurity(e, formData)}>
+                    <form className="security-form">
                         <div className="name-input">
                             <label htmlFor="name">Name</label>
                             <br/>
@@ -63,7 +62,6 @@ export default function SecurityModal(props) {
                                     <option key={id} value={country}>{country}</option>
                                 ))}
                             </select>
-                            <button type="submit">Submit</button>
                         </div>
 
                     </form>
@@ -72,7 +70,8 @@ export default function SecurityModal(props) {
                 <div className="security-close-div">
                     <p className="delete-security-btn" onClick={() => console.log("Deleted")}>Delete</p>
                     <p className="cancel-security-btn" onClick={() => props.closeEditModal()}>Cancel</p>
-                    <p className="save-security-btn" >Save</p>
+                    <p className="save-security-btn" 
+                    onClick={(e) => props.addASecurity(e, formData)}>Save</p>
                 </div>
             </div>
         </div>
