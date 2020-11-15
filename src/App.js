@@ -10,7 +10,6 @@ function App() {
     <div className="App">
         <h1>Securities</h1>
           <SecuritiesList />
-        <button onClick={() => console.log("add security button")}>Add</button>
     </div>
   );
 }
