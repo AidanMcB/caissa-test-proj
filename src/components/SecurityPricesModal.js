@@ -3,11 +3,20 @@ import PriceModal from './PriceModal'
 
 export default function SecurityPricesModal(props) {
 
-    
-    const [isPriceOpen, setPriceOpen] = useState(false)
+    const [selectedPrice, setPrice] = useState({})
+    const [showAddPrice, setAddPrice] = useState(false)
+    const [showEditPrice, setEditPrice] = useState(false)
     const closePrice = () => {
-        setPriceOpen(false)
+        setAddPrice(false)
+        setEditPrice(false)
     }
+
+    const handleEditClick = (price) => {
+        setPrice(price)
+        setEditPrice(true)
+    }
+
+
     const prices = props.children.prices
     
     if (props.show === false) {
@@ -23,23 +32,26 @@ export default function SecurityPricesModal(props) {
                             <div key={index} className="price-row">
                                 <p>{price.date}</p>
                                 <p>{price.amount}</p>
-                                <p>Edit</p>
+                                <p onClick={() => handleEditClick(price)}>Edit</p>
                                 <p onClick={(e) => props.deletePrice(e, props.security, price)}>x</p>
                             </div>
                         ))}
                     </div>
-                    <p onClick={() => setPriceOpen(true)}>+ Add</p>
+                    <p onClick={() => setAddPrice(true)}>+ Add</p>
                 </div>
                 <div className="prices-close-div">
                     <p className="prices-close-btn" onClick={() => props.closePricesModal()}>Close</p>
                 </div>
             </div>
             <PriceModal 
+                price={selectedPrice}
                 security={props.security}
-                showPrice={isPriceOpen}
+                showAddPrice={showAddPrice}
+                showEditPrice={showEditPrice}
                 addPrice={props.addPrice}
+                editPrice={props.editPrice}
                 closePrice={closePrice}
-                ></PriceModal>
+                >{selectedPrice}</PriceModal>
 
         </div>
     )

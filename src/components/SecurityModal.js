@@ -31,7 +31,7 @@ export default function SecurityModal(props) {
     if (props.showEdit === true) {
         display = {
             title: `Edit Security: ${props.children.name}`,
-            deleteButton: 'unest'
+            deleteButton: 'unset'
         }
         closeModal = (() => props.closeEditModal())
         addOrEdit = ((e) => editAndClose(e, formData, props.children ))

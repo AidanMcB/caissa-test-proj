@@ -57,6 +57,10 @@ export default function SecuritiesList() {
             ...securities
         ])
     }
+    //edit Price for a security
+    const editPrice = (e, selectedSecuirty, SelectedPrice, newPrice) => {
+        console.log(newPrice)
+    }
 
 
     const [emptySecurity, setEmptySec] = useState({
@@ -66,7 +70,6 @@ export default function SecuritiesList() {
         prices: []
     })
 
-
     return (
         <div className="securities-list">
             {securities.map((security, index) => (
@@ -75,6 +78,7 @@ export default function SecuritiesList() {
                     deleteASecurity={deleteASecurity}
                     addPrice={addPrice}
                     deletePrice={deletePrice}
+                    editPrice={editPrice}
                 />
             ))}
             <button className="add-security-btn"
@@ -86,7 +90,6 @@ export default function SecuritiesList() {
                 closeAddModal={closeAddModal}>
                 {emptySecurity}
             </SecurityModal>
-
         </div>
     )
 }
