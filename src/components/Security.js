@@ -15,6 +15,7 @@ export default function Security(props) {
     }
     const security = props.security
 
+
     return (
         <div className="security-card">
             <h3>{security.name}</h3>

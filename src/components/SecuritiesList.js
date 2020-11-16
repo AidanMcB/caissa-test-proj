@@ -22,26 +22,32 @@ export default function SecuritiesList() {
     }
     //edit Security
     const editASecurity = (e, updatedSecurityInfo, originalSecurity) => {
-        console.log(e, updatedSecurityInfo, originalSecurity )
         e.preventDefault()
-        let editedSecurity = securities.find(sec => sec === originalSecurity)
-        let index = securities.indexOf(editedSecurity)
-        console.log(editedSecurity, index)
-
+        let index = securities.findIndex(sec => securities.indexOf(sec) === securities.indexOf(originalSecurity))
+        updatedSecurityInfo.prices = originalSecurity.prices
+        securities.splice(index, 1, updatedSecurityInfo)
+        setSecurities([
+            ...securities
+        ])
     }
 
     //add Prices to a security 
     const addPrice = (e, security, newPrice) => {
         e.preventDefault()
         setSecurities([...securities, security.prices.push(newPrice)])
-        
     }
 
-    // where do securities come from?
-    //10
+    const [emptySecurity, setEmptySec] = useState({
+        name: '',
+        ISIN: '',
+        country: '',
+        prices: []
+    })
+
 
     return (
         <div className="securities-list">
+        <button onClick={() => console.log(securities)}>Print</button>
             {securities.map( (security, index) => (
                 <Security key={index} security={security} editASecurity={editASecurity} addPrice={addPrice} />
             ))}
@@ -52,6 +58,7 @@ export default function SecuritiesList() {
                 showAdd={isAddModalOpen}
                 addASecurity={addASecurity}
                 closeAddModal={closeAddModal}>
+                {emptySecurity}
             </SecurityModal>
 
         </div>

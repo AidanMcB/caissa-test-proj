@@ -1,61 +1,46 @@
 import React, { useState } from 'react';
 
 export default function SecurityModal(props) {
-    //should have edit mode or add mode 
-    //check if the prop passed was a single security
-    //possible by checking for a name attribute
-    // console.log(props.closeEditModal)
 
     //state to capture form data 
-    const [formData, setFormData] = useState({})
+    const [formData, setFormData] = useState({
+        name: `${props.children.name}`,
+        ISIN: `${props.children.ISIN}`,
+        country: `${props.children.country}`,
+        prices: []
+    })
+
     const setValue = (key, value) => {
         setFormData({ ...formData, [key]: value })
     }
-    // Things that depend on Add or Edit 
-    // Edit Mode:
-    // title: Edit Security: Security-Name
-    // Delete Button
-    // pre-filled values
-    // FUNCTIONS:
-    // closeEditModal()
-    // editASecurity()
-    // Add Mode:
-    // title: Add Security
-    // No Delete Button
-    // No pre-filled values
-    // FUNCTIONS:
-    // closeAddModal()
-    // addASecuirty()
+
+    //Edit then close modal
+    // takes event, edited security info, and the original security
+    const editAndClose = (e, security, propChildren) => {
+        props.editASecurity(e, security, propChildren)
+        props.closeEditModal()
+    }
+
     let display = {}
     let addOrEdit = null;
     let closeModal = null;
-    if(props.showEdit === true ){
-        console.log(props.children.name)
-
-        // setFormData({
-        //     name: `${props.children.name}`,
-        //     ISIN: `${props.children.ISIN}`,
-        //     counrty: `${props.children.country}`,
-        //     prices: [],
-        // })
+    if (props.showEdit === true) {
         display = {
             title: `Edit Security: ${props.children.name}`,
             deleteButton: 'unest'
         }
-
         closeModal = (() => props.closeEditModal())
-        addOrEdit = (() => props.editASecurity())
-    }else if(props.showAdd === true){
+        addOrEdit = ((e) => editAndClose(e, formData, props.children ))
+    } else if (props.showAdd === true) {
         display = {
             title: 'Add Security',
             deleteButton: 'none',
         }
         console.log("ran")
-        setFormData({...formData, name: 'x'})
         closeModal = (() => props.closeAddModal())
-        addOrEdit = (() => props.addASecurity())
+        addOrEdit = ((e) => props.addASecurity(e, formData))
     }
- 
+
     const countries = [
         'Sweden',
         'Finland',
@@ -110,7 +95,7 @@ export default function SecurityModal(props) {
                         onClick={() => console.log("Deleted")}>Delete</p>
                     <p className="cancel-security-btn" onClick={closeModal}>Cancel</p>
                     <p className="save-security-btn"
-                        onClick={(e) => addOrEdit(e, formData, props.children.security)}>Save</p>
+                        onClick={(e) => addOrEdit(e)}>Save</p>
                 </div>
             </div>
         </div>
