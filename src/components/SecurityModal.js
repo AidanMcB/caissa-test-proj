@@ -20,6 +20,10 @@ export default function SecurityModal(props) {
         props.editASecurity(e, security, propChildren)
         props.closeEditModal()
     }
+    const deleteAndClose = (e, propChildren) => {
+        props.deleteASecurity(e, propChildren)
+        props.closeEditModal()
+    }
 
     let display = {}
     let addOrEdit = null;
@@ -61,17 +65,17 @@ export default function SecurityModal(props) {
             <div className="modal-content">
                 <div className="top-security-wrapper">
                     <header>{display.title}</header>
-                    <form className="security-form">
+                    <form className="security-form" noValidate>
                         <div className="name-input">
                             <label htmlFor="name">Name</label>
                             <br />
-                            <input type="text" id="name" name="name" value={formData.name}
+                            <input required type="text" id="name" name="name" value={formData.name}
                                 onChange={(e) => setValue("name", e.target.value)}></input>
                         </div>
                         <div className="ISIN-input">
                             <label htmlFor="ISIN">ISIN</label>
                             <br />
-                            <input type="text" id="ISIN" name="ISIN" value={formData.ISIN}
+                            <input required type="text" id="ISIN" name="ISIN" value={formData.ISIN}
                                 onChange={(e) => setValue("ISIN", e.target.value)}></input>
                         </div>
                         <div className="country-input">
@@ -79,7 +83,6 @@ export default function SecurityModal(props) {
                             <br />
                             <select name="countries" id="countries" value={formData.country}
                                 onChange={(e) => setValue("country", e.target.value)}>
-                                <option value=" "></option>
                                 {countries.map((country, id) => (
                                     <option key={id} value={country}>{country}</option>
                                 ))}
@@ -92,7 +95,7 @@ export default function SecurityModal(props) {
                 <div className="security-close-div">
                     <p className="delete-security-btn"
                         style={{ display: `${display.deleteButton}` }}
-                        onClick={(e) => props.deleteASecurity(e, props.children)}>Delete</p>
+                        onClick={(e) => deleteAndClose(e, props.children)}>Delete</p>
                     <p className="cancel-security-btn" onClick={closeModal}>Cancel</p>
                     <p className="save-security-btn"
                         onClick={(e) => addOrEdit(e)}>Save</p>

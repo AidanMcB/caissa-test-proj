@@ -54,7 +54,6 @@ export default function SecuritiesList() {
 
     return (
         <div className="securities-list">
-        <button onClick={() => console.log(securities)}>Print</button>
             {securities.map( (security, index) => (
                 <Security key={index} security={security} editASecurity={editASecurity} deleteASecurity={deleteASecurity} addPrice={addPrice} />
             ))}
