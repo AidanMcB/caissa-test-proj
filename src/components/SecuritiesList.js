@@ -30,6 +30,13 @@ export default function SecuritiesList() {
             ...securities
         ])
     }
+    //delete Secuirty
+    const deleteASecurity = (e, selectedSecurity) => {
+        e.preventDefault()
+        setSecurities([
+            ...securities.filter( sec => sec !== selectedSecurity)
+        ])
+    }
 
     //add Prices to a security 
     const addPrice = (e, security, newPrice) => {
@@ -49,7 +56,7 @@ export default function SecuritiesList() {
         <div className="securities-list">
         <button onClick={() => console.log(securities)}>Print</button>
             {securities.map( (security, index) => (
-                <Security key={index} security={security} editASecurity={editASecurity} addPrice={addPrice} />
+                <Security key={index} security={security} editASecurity={editASecurity} deleteASecurity={deleteASecurity} addPrice={addPrice} />
             ))}
             <button className="add-security-btn"
                 onClick={() => setAddModal(true)}>Add
