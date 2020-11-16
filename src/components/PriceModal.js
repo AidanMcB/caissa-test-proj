@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function PriceModal(props) {
 
     //state to capture form data 
     const [formData, setFormData] = useState({
-        date: `${props.children.date}`,
-        amount: props.price.amount,
-
+        date: '',
+        amount: 0,
     })
+    // Depending on Edit or Add, change the form data
+    useEffect(() => {
+        if (props.showEditPrice) {
+            setFormData({
+                date: `${props.children.date}`,
+                amount: props.price.amount,
+            })
+        } else {
+            setFormData({
+                date: '',
+                amount: 0
+            })
+        }
+    }, [props])
+
     const setValue = (key, value) => {
         setFormData({ ...formData, [key]: value })
     }
@@ -17,17 +31,19 @@ export default function PriceModal(props) {
         props.closePrice()
     }
 
-    console.log(props.children.date)
-    console.log(formData.date)
+    const handleEditPrice = (e, selectedSecurity, selectedPrice, newPrice) => {
+        props.editPrice(e, selectedSecurity, selectedPrice, newPrice)
+        props.closePrice()
+    }
+
     //define ADD or EDIT mode 
     let display = {}
     let addOrEdit = null;
-    let closeModal = null;
     if (props.showEditPrice === true) {
         display = {
             title: `Edit Price`,
         }
-        // addOrEdit = ((e) => editAndClose(e, formData, props.children ))
+        addOrEdit = ((e) => handleEditPrice(e, props.security, props.children,formData))
     } else if (props.showAddPrice === true) {
         display = {
             title: 'Add Price',
@@ -42,7 +58,7 @@ export default function PriceModal(props) {
         <div className="prices-modal">
             <div className="modal-content">
                 <h1>{display.title}</h1>
-                <form onSubmit={(e) => addOrEdit(e, props.security, formData)}>
+                <form onSubmit={(e) => addOrEdit(e)}>
                     <div className="name-input">
                         <label htmlFor="date">Date</label>
                         <br />

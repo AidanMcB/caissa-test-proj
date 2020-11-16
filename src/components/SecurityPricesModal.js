@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PriceModal from './PriceModal'
 
-export default function SecurityPricesModal(props) {
+export default function SecurityPricesModal(props) {    
 
     const [selectedPrice, setPrice] = useState({})
     const [showAddPrice, setAddPrice] = useState(false)

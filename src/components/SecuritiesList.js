@@ -58,8 +58,8 @@ export default function SecuritiesList() {
         ])
     }
     //edit Price for a security
-    const editPrice = (e, selectedSecuirty, SelectedPrice, newPrice) => {
-        console.log(newPrice)
+    const editPrice = (e, selectedSecurity, selectedPrice, newPrice) => {
+        console.log(selectedSecurity, selectedPrice, newPrice)
     }
 
 
