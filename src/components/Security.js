@@ -15,6 +15,7 @@ export default function Security(props) {
     }
     const security = props.security
 
+
     return (
         <div className="security-card">
             <h3>{security.name}</h3>
@@ -29,6 +30,8 @@ export default function Security(props) {
                 {security}
             </SecurityPricesModal>
             <SecurityModal 
+                editASecurity={props.editASecurity}
+                deleteASecurity={props.deleteASecurity}
                 showEdit={isEditModalOpen}
                 closeEditModal={closeEditModal}>
                 {security}

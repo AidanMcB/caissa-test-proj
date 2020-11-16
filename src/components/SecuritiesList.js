@@ -20,21 +20,43 @@ export default function SecuritiesList() {
         setSecurities([...securities, newSecurity])
         closeAddModal()
     }
+    //edit Security
+    const editASecurity = (e, updatedSecurityInfo, originalSecurity) => {
+        e.preventDefault()
+        let index = securities.findIndex(sec => securities.indexOf(sec) === securities.indexOf(originalSecurity))
+        updatedSecurityInfo.prices = originalSecurity.prices
+        securities.splice(index, 1, updatedSecurityInfo)
+        setSecurities([
+            ...securities
+        ])
+    }
+    //delete Secuirty
+    const deleteASecurity = (e, selectedSecurity) => {
+        e.preventDefault()
+        setSecurities([
+            ...securities.filter( sec => sec !== selectedSecurity)
+        ])
+    }
 
     //add Prices to a security 
     const addPrice = (e, security, newPrice) => {
         e.preventDefault()
         setSecurities([...securities, security.prices.push(newPrice)])
-        
     }
 
-    // where do securities come from?
-    //10
+    const [emptySecurity, setEmptySec] = useState({
+        name: '',
+        ISIN: '',
+        country: '',
+        prices: []
+    })
+
 
     return (
         <div className="securities-list">
+        <button onClick={() => console.log(securities)}>Print</button>
             {securities.map( (security, index) => (
-                <Security key={index} security={security} addPrice={addPrice} />
+                <Security key={index} security={security} editASecurity={editASecurity} deleteASecurity={deleteASecurity} addPrice={addPrice} />
             ))}
             <button className="add-security-btn"
                 onClick={() => setAddModal(true)}>Add
@@ -43,6 +65,7 @@ export default function SecuritiesList() {
                 showAdd={isAddModalOpen}
                 addASecurity={addASecurity}
                 closeAddModal={closeAddModal}>
+                {emptySecurity}
             </SecurityModal>
 
         </div>
