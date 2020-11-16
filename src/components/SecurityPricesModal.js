@@ -24,7 +24,7 @@ export default function SecurityPricesModal(props) {
                                 <p>{price.date}</p>
                                 <p>{price.amount}</p>
                                 <p>Edit</p>
-                                <p>x</p>
+                                <p onClick={(e) => props.deletePrice(e, props.security, price)}>x</p>
                             </div>
                         ))}
                     </div>

@@ -26,6 +26,7 @@ export default function Security(props) {
             <SecurityPricesModal show={isPricesModalOpen}
                 security={security}
                 addPrice={props.addPrice}
+                deletePrice={props.deletePrice}
                 closePricesModal={closePricesModal}>
                 {security}
             </SecurityPricesModal>

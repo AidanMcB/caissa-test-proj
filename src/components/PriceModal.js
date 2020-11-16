@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 
 export default function PriceModal(props) {
-    //should have edit mode or add mode 
-    //check if the prop passed was a single security
-    //possible by checking for a name attribute
-    // console.log(props.closeEditModal)
 
     //state to capture form data 
     const [formData, setFormData] = useState({
@@ -20,6 +16,7 @@ export default function PriceModal(props) {
         props.addPrice(e, security, newPrice)
         props.closePrice()
     }
+    
     if (props.showPrice === false) {
         return null;
     }

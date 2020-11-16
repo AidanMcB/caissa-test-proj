@@ -23,7 +23,7 @@
         "ISIN": "US0008926250",
         "country": "Germany",
         "prices": [
-            { "date": "01/01/19", "amount": 900, "id": 1 },
+            { "date": "12/01/18", "amount": 550, "id": 1 },
             { "date": "01/02/19", "amount": 700, "id": 2 },
             { "date": "01/03/19", "amount": 500, "id": 3 },
             { "date": "01/04/19", "amount": 600, "id": 4 },

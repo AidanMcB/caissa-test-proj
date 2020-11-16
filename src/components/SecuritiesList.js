@@ -14,11 +14,19 @@ export default function SecuritiesList() {
         setAddModal(false)
     }
 
+    // *** SECURITY *** //
     //add Security
-    const addASecurity = (e,newSecurity) => {
+    const addASecurity = (e, newSecurity) => {
         e.preventDefault()
         setSecurities([...securities, newSecurity])
         closeAddModal()
+    }
+    //delete Secuirty
+    const deleteASecurity = (e, selectedSecurity) => {
+        e.preventDefault()
+        setSecurities([
+            ...securities.filter(sec => sec !== selectedSecurity)
+        ])
     }
     //edit Security
     const editASecurity = (e, updatedSecurityInfo, originalSecurity) => {
@@ -30,19 +38,26 @@ export default function SecuritiesList() {
             ...securities
         ])
     }
-    //delete Secuirty
-    const deleteASecurity = (e, selectedSecurity) => {
-        e.preventDefault()
-        setSecurities([
-            ...securities.filter( sec => sec !== selectedSecurity)
-        ])
-    }
 
+    // *** PRICES *** //
     //add Prices to a security 
     const addPrice = (e, security, newPrice) => {
         e.preventDefault()
         setSecurities([...securities, security.prices.push(newPrice)])
     }
+    //delete Price for a security
+    const deletePrice = (e, selectedSecurity, selectedPrice) => {
+        e.preventDefault()
+        //find the security, delte the selectedPrice
+        let replacementSec = selectedSecurity
+        replacementSec.prices = selectedSecurity.prices.filter(price => price !== selectedPrice)
+        let index = securities.findIndex(sec => securities.indexOf(sec) === securities.indexOf(selectedSecurity))
+        securities.splice(index, 1, replacementSec)
+        setSecurities([
+            ...securities
+        ])
+    }
+
 
     const [emptySecurity, setEmptySec] = useState({
         name: '',
@@ -54,13 +69,18 @@ export default function SecuritiesList() {
 
     return (
         <div className="securities-list">
-            {securities.map( (security, index) => (
-                <Security key={index} security={security} editASecurity={editASecurity} deleteASecurity={deleteASecurity} addPrice={addPrice} />
+            {securities.map((security, index) => (
+                <Security key={index} security={security}
+                    editASecurity={editASecurity}
+                    deleteASecurity={deleteASecurity}
+                    addPrice={addPrice}
+                    deletePrice={deletePrice}
+                />
             ))}
             <button className="add-security-btn"
                 onClick={() => setAddModal(true)}>Add
             </button>
-            <SecurityModal 
+            <SecurityModal
                 showAdd={isAddModalOpen}
                 addASecurity={addASecurity}
                 closeAddModal={closeAddModal}>
