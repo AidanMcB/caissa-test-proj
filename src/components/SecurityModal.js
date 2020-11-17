@@ -84,7 +84,7 @@ export default function SecurityModal(props) {
             <div className="modal-content">
                 <div className="top-security-wrapper">
                     <header>{display.title}</header>
-                    <form className="security-form" noValidate>
+                    <form className="security-form" id="my-form" onSubmit={(e) => addOrEdit(e)}>
                         <div className="name-input">
                             <label htmlFor="name">Name</label>
                             <br />
@@ -100,14 +100,14 @@ export default function SecurityModal(props) {
                         <div className="country-input">
                             <label htmlFor="country">Country</label>
                             <br />
-                            <select name="countries" id="countries" value={formData.country}
+                            <select required name="countries" id="countries" value={formData.country}
                                 onChange={(e) => setValue("country", e.target.value)}>
+                                <option value=""></option>
                                 {countries.map((country, id) => (
                                     <option key={id} value={country}>{country}</option>
                                 ))}
                             </select>
                         </div>
-
                     </form>
 
                 </div>
@@ -116,8 +116,8 @@ export default function SecurityModal(props) {
                         style={{ display: `${display.deleteButton}` }}
                         onClick={(e) => deleteAndClose(e, props.children)}>Delete</p>
                     <p className="cancel-security-btn" onClick={closeModal}>Cancel</p>
-                    <p className="save-security-btn"
-                        onClick={(e) => addOrEdit(e)}>Save</p>
+                    <button className="save-security-btn" type="submit" form="my-form"
+                        >Save</button>
                 </div>
             </div>
         </div>

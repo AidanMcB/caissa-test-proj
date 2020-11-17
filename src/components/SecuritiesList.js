@@ -21,6 +21,7 @@ export default function SecuritiesList() {
     //add Security
     const addASecurity = (e, newSecurity) => {
         e.preventDefault()
+        console.log(newSecurity)
         setSecurities([...securities, newSecurity])
         closeAddModal()
     }
