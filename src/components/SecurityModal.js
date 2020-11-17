@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function SecurityModal(props) {
 
@@ -9,6 +9,24 @@ export default function SecurityModal(props) {
         country: `${props.children.country}`,
         prices: []
     })
+    // Depending on Edit or Add, change the form data
+    useEffect(() => {
+        if (props.showEdit) {
+            setFormData({
+                name: `${props.children.name}`,
+                ISIN: `${props.children.ISIN}`,
+                country: `${props.children.country}`,
+                prices: []
+            })
+        } else {
+            setFormData({
+                name: `${props.children.name}`,
+                ISIN: `${props.children.ISIN}`,
+                country: `${props.children.country}`,
+                prices: []
+            })
+        }
+    }, [props])
 
     const setValue = (key, value) => {
         setFormData({ ...formData, [key]: value })
@@ -34,17 +52,18 @@ export default function SecurityModal(props) {
             deleteButton: 'unset'
         }
         closeModal = (() => props.closeEditModal())
-        addOrEdit = ((e) => editAndClose(e, formData, props.children ))
+        addOrEdit = ((e) => editAndClose(e, formData, props.children))
     } else if (props.showAdd === true) {
         display = {
             title: 'Add Security',
             deleteButton: 'none',
         }
-        console.log("ran")
         closeModal = (() => props.closeAddModal())
         addOrEdit = ((e) => props.addASecurity(e, formData))
     }
 
+    // hard coded countries, could alternatively be passed down from Securities List
+    // or imported directly from json file, API, etc
     const countries = [
         'Sweden',
         'Finland',
