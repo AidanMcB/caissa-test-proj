@@ -60,7 +60,15 @@ export default function SecuritiesList() {
     }
     //edit Price for a security
     const editPrice = (e, selectedSecurity, selectedPrice, newPrice) => {
-        console.log(selectedSecurity, selectedPrice, newPrice)
+        e.preventDefault()
+        // console.log(selectedSecurity, selectedPrice, newPrice)
+        let prices = selectedSecurity.prices
+        let priceIndex = prices.findIndex(price => prices.indexOf(price) === prices.indexOf(selectedPrice))
+        //replace the price 
+        prices.splice(priceIndex, 1, newPrice)
+        setSecurities([
+            ...securities
+        ])
     }
 
 

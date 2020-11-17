@@ -62,14 +62,14 @@ export default function PriceModal(props) {
                     <div className="name-input">
                         <label htmlFor="date">Date</label>
                         <br />
-                        <input type="text" id="date" name="date" value={formData.date}
+                        <input required type="text" id="date" name="date" value={formData.date}
                             onChange={(e) => setValue("date", e.target.value)}></input>
                     </div>
                     <div className="ISIN-input">
                         <label htmlFor="amount">Amount</label>
                         <br />
-                        <input type="number" id="amount" name="amount" min="1" value={formData.amount}
-                            onChange={(e) => setValue("amount", e.target.value)}></input>
+                        <input required type="number" id="amount" name="amount" min="1" value={formData.amount}
+                            onChange={(e) => setValue("amount", parseInt(e.target.value))}></input>
                     </div>
                     <button type="submit">Submit</button>
                 </form>
