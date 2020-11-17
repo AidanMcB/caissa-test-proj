@@ -1,0 +1,18 @@
+-- Styling Dimensions and Notes -- 
+Total View  
+ 50 squares x 30 squares 
+
+Securities List:
+- Indented 5 squares ()
+- Security Card 
+    width: 40 squares
+    height: 4 squares 
+    
+    - Add Button    
+        width: 5 squares 
+        height: 2 squares 
+
+
+Personal Notes:
+Use box-sizing: border-box to prevent padding
+from expanding the size of elements 
