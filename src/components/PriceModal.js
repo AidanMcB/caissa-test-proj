@@ -1,44 +1,75 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function PriceModal(props) {
-    //should have edit mode or add mode 
-    //check if the prop passed was a single security
-    //possible by checking for a name attribute
-    // console.log(props.closeEditModal)
 
     //state to capture form data 
     const [formData, setFormData] = useState({
         date: '',
-        amount: null,
-
+        amount: 0,
     })
+    // Depending on Edit or Add, change the form data
+    useEffect(() => {
+        if (props.showEditPrice) {
+            setFormData({
+                date: `${props.children.date}`,
+                amount: props.price.amount,
+            })
+        } else {
+            setFormData({
+                date: '',
+                amount: 0
+            })
+        }
+    }, [props])
+
     const setValue = (key, value) => {
         setFormData({ ...formData, [key]: value })
     }
 
-    const handleSubmit = (e, security, newPrice) => {
+    const handleAddPrice = (e, security, newPrice) => {
         props.addPrice(e, security, newPrice)
         props.closePrice()
     }
-    if (props.showPrice === false) {
+
+    const handleEditPrice = (e, selectedSecurity, selectedPrice, newPrice) => {
+        props.editPrice(e, selectedSecurity, selectedPrice, newPrice)
+        props.closePrice()
+    }
+
+    //define ADD or EDIT mode 
+    let display = {}
+    let addOrEdit = null;
+    if (props.showEditPrice === true) {
+        display = {
+            title: `Edit Price`,
+        }
+        addOrEdit = ((e) => handleEditPrice(e, props.security, props.children,formData))
+    } else if (props.showAddPrice === true) {
+        display = {
+            title: 'Add Price',
+        }
+        addOrEdit = ((e) => handleAddPrice(e, props.security, formData))
+    }
+
+    if (props.showAddPrice === false && props.showEditPrice === false) {
         return null;
     }
     return (
         <div className="prices-modal">
             <div className="modal-content">
-                <h1>Edit/Add Price</h1>
-                <form onSubmit={(e) => handleSubmit(e, props.security, formData)}>
+                <h1>{display.title}</h1>
+                <form onSubmit={(e) => addOrEdit(e)}>
                     <div className="name-input">
                         <label htmlFor="date">Date</label>
                         <br />
-                        <input type="text" id="date" name="date"
+                        <input required type="text" id="date" name="date" value={formData.date}
                             onChange={(e) => setValue("date", e.target.value)}></input>
                     </div>
                     <div className="ISIN-input">
                         <label htmlFor="amount">Amount</label>
                         <br />
-                        <input type="number" id="amount" name="amount" min="1"
-                            onChange={(e) => setValue("amount", e.target.value)}></input>
+                        <input required type="number" id="amount" name="amount" min="1" value={formData.amount}
+                            onChange={(e) => setValue("amount", parseInt(e.target.value))}></input>
                     </div>
                     <button type="submit">Submit</button>
                 </form>
