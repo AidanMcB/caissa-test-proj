@@ -12,8 +12,9 @@ code {
     monospace;
 }
 :root {
-  --row-size: ((2 / 15));
-  --row-gap-size: ((1 / 30) );
+  --row-size: (2 / 15);
+  --row-gap-size: (1 / 30);
+  --sec-modal-width: (2/3);
 }
 /* Main Page */
 /* Securities List */
@@ -70,7 +71,7 @@ code {
 .prices-link, .edit-link{
   text-decoration: underline;
 }
-/* Security Prices Modal */
+/* Security Modal and Prices Modal */
 .prices-modal, .security-modal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -89,7 +90,8 @@ code {
   margin: 15% auto; /* 15% from the top and centered */
   padding: 0px;
   border: 1px solid black;
-  width: 60%; 
+  height: calc( 100vh / 3);
+  width: calc( 100vw / var(--sec-modal-width))
 }
 
 .close:hover,
@@ -98,6 +100,7 @@ code {
   text-decoration: none;
   cursor: pointer;
 }
+/* Prices Modal */
 .top-modal-wrapper {
   padding: 5% 2% 0 5%;
 }
