@@ -1,0 +1,22 @@
+-- Styling Dimensions and Notes -- 
+Total View  
+ 50 squares x 30 squares 
+(square * 20)
+(1000 * 600 example)
+
+Securities List:
+- Indented 5 squares (100)
+- Security Card 
+    width: 40 squares (800)
+    height: 4 squares (80)
+    
+    - Add Button    
+        width: 5 squares (100)
+        height: 2 squares (40)
+
+SecuirtyCard:
+Currently a grid, try as a flexbox:
+
+Personal Notes:
+Use box-sizing: border-box to prevent padding
+from expanding the size of elements 
