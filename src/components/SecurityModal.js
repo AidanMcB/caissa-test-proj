@@ -112,10 +112,10 @@ export default function SecurityModal(props) {
 
                 </div>
                 <div className="security-close-div">
-                    <p className="delete-security-btn"
+                    <button className="delete-security-btn"
                         style={{ display: `${display.deleteButton}` }}
-                        onClick={(e) => deleteAndClose(e, props.children)}>Delete</p>
-                    <p className="cancel-security-btn" onClick={closeModal}>Cancel</p>
+                        onClick={(e) => deleteAndClose(e, props.children)}>Delete</button>
+                    <button className="cancel-security-btn" onClick={closeModal}>Cancel</button>
                     <button className="save-security-btn" type="submit" form="my-form"
                         >Save</button>
                 </div>

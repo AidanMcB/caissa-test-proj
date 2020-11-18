@@ -87,9 +87,10 @@ code {
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 0px;
   border: 1px solid black;
+  /* sizes modal proportionatley to vh */
   height: calc( 100vh / 3);
   width: calc( 100vw / var(--sec-modal-width))
 }
@@ -145,36 +146,53 @@ code {
 .prices-close-btn{
   margin-right: 3%;
 }
-/* Security Add/Edit Modal */
+
+  /* Security Add/Edit Modal */
+
 .security-modal > .modal-content{
   width: 40%;
 }
 .top-security-wrapper {
-  padding: 3%;
+  height: calc( 17 / 20 * 100%);
+  box-sizing: border-box;
+  padding: 5%;
 }
 .security-form {
+  margin: 5% 0 2% 0;
   display: flex;
   flex-wrap: wrap;
-  padding: 2%;
+  justify-content: space-between;
 }
-.name-input, .ISIN-input, .country-input{
-  width: 46%;
-  margin: 2%;
+.security-form > div > input, .security-form > div > select {
+  font-size: 1em;
 }
-#countries, #name, #ISIN{
- width: 98%;
+.name-input, .ISIN-input{
+  width: 50%;
+}
+.country-input{
+  flex-grow: 1;
+}
+#countries{
+  width: 42%;
 }
 .security-close-div{
+  display: inline-block;
   border-top: 1px solid black;
-  display:flex;
+  height: calc( (3 / 20) * 100%);
+  width: 100%;
+  margin: auto;
+  text-align: right;
+}
+.security-close-div > button{
+
 }
 .delete-security-btn{
-  margin-left: 2%;
+  margin: 0% 50% 0% 0%;
 }
-  .cancel-security-btn{
-  margin-left: auto;
-  margin-right: 3%;
+.cancel-security-btn{
+ margin:  1% 2% 0% 2%;
 }
 .save-security-btn{
-  margin-right: 2%;
+  margin: 0% 2% 0% 2%;
+ 
 }
