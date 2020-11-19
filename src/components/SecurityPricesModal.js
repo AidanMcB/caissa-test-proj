@@ -32,15 +32,15 @@ export default function SecurityPricesModal(props) {
                             <div key={index} className="price-row">
                                 <p>{price.date}</p>
                                 <p>{price.amount}</p>
-                                <p onClick={() => handleEditClick(price)}>Edit</p>
-                                <p onClick={(e) => props.deletePrice(e, props.security, price)}>x</p>
+                                <button onClick={() => handleEditClick(price)}>Edit</button>
+                                <button onClick={(e) => props.deletePrice(e, props.security, price)}>x</button>
                             </div>
                         ))}
                     </div>
-                    <p onClick={() => setAddPrice(true)}>+ Add</p>
+                    <button onClick={() => setAddPrice(true)}>+ Add</button>
                 </div>
                 <div className="prices-close-div">
-                    <p className="prices-close-btn" onClick={() => props.closePricesModal()}>Close</p>
+                    <button className="prices-close-btn" onClick={() => props.closePricesModal()}>Close</button>
                 </div>
             </div>
             <PriceModal 
