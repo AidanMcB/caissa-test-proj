@@ -46,9 +46,11 @@ export default function SecurityPricesModal(props) {
         props.editPrice(e, props.security, myPrices)
         props.addPrice(e, props.security, myPrices)
         props.closePricesModal(e)
+        setAddPriceDisplay(false)
     }
 
     const handleEditClick = (price) => {
+        setAddPriceDisplay(false)
         setClickPrice({
             price: price,
             style: {
