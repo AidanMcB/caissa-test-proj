@@ -45,9 +45,9 @@ export default function SecuritiesList() {
 
     // *** PRICES *** //
     //add Prices to a security 
-    const addPrice = (e, security, newPrice) => {
+    const addPrice = (e, selectedSecurity, newPrice) => {
         e.preventDefault()
-        security.prices.push(newPrice)
+        selectedSecurity.prices.push(newPrice)
         setSecurities([...securities ])
     }
     //delete Price for a security
@@ -63,16 +63,11 @@ export default function SecuritiesList() {
         ])
     }
     //edit Price for a security
-    const editPrice = (e, selectedSecurity, selectedPrice, newPrice) => {
+    const editPrice = (e, selectedSecurity, newPrices) => {
         e.preventDefault()
-        // console.log(selectedSecurity, selectedPrice, newPrice)
-        let prices = selectedSecurity.prices
-        let priceIndex = prices.findIndex(price => prices.indexOf(price) === prices.indexOf(selectedPrice))
-        //replace the price 
-        prices.splice(priceIndex, 1, newPrice)
-        setSecurities([
-            ...securities
-        ])
+        let newSecurity = selectedSecurity
+        newSecurity.prices = newPrices
+        editASecurity(e, newSecurity, selectedSecurity)
     }
 
 

@@ -78,3 +78,15 @@ export default function PriceModal(props) {
         </div>
     )
 }
+{/* <PriceModal
+price={selectedPrice}
+security={props.security}
+showAddPrice={showAddPrice}
+showEditPrice={showEditPrice}
+addPrice={props.addPrice}
+editPrice={props.editPrice}
+closePrice={closePrice}
+></PriceModal> */}
+// $("#myeditablediv").keypress(function(e) {
+//     if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
+// });
