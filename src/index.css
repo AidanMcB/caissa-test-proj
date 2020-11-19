@@ -27,19 +27,25 @@ code {
 }
 .add-security-btn{
   padding: 0;
-  font-size: 1.2em;
+  font-size: 1em;
+  font-weight: 600;
   height: 50%;
   width: 12.5%;
   grid-column: 3;
-  background-color: white;
+  background-color: rgb(0, 181, 50);
+  color: white;
+  border: none;
+  border-radius: 5px;
+
 }
 /* Security Card */
 .security-card {
   justify-self: stretch;
-  border: 1px solid black;
+  border: 1px solid rgb(215, 215, 215);
+  box-shadow:  0 1px rgb(215, 215, 215);
   grid-column: 3;
   display: grid;
-  grid-template-columns: 2.5% 17.5% 12.5% 61.25% 6.25%; 
+  grid-template-columns: 2.5% 19.25% 14.25% 57.75% 6.25%; 
   grid-template-rows: 25% 25% 25% 25%
 }
 .security-card > h3 {
@@ -47,11 +53,13 @@ code {
   grid-row: 2;
   justify-self: start;
   margin: 0;
+  /* color: rgb(10, 3, 3); */
 }
 .security-card > p {
-  justify-self: start;
+  align-self: center;
   margin: 0;
   grid-row: 3;
+  color: rgb(120, 120, 120);
 }
 .security-card > p:nth-child(2){
   grid-column: 2;
@@ -61,16 +69,30 @@ code {
   grid-column: 3;
   justify-self: start;
 }
-.security-card > p:nth-child(4){
+.security-card > button:nth-child(4){
   grid-column: 4;
+  grid-row: 3;
   justify-self: start;
+  background-color:  rgb(249, 250, 249);
+  border-radius: 5px;
+  padding:5px;
+  border: 1px solid rgb(215, 215, 215);
+  box-shadow:  0 1px rgb(215, 215, 215);
 }
-.security-card > p:nth-child(5){
+.security-card > button:nth-child(5){
   grid-column: 5;
+  grid-row: 3;
   justify-self: start;
+  padding: 5px;
+
+  background-color:  rgb(249, 250, 249);
+  border-radius: 5px;
+  border: 1px solid rgb(215, 215, 215);
+  box-shadow:  0 1px rgb(215, 215, 215);
+
 }
 .prices-link, .edit-link{
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 /* Security Modal and Prices Modal */
 .prices-modal, .security-modal {
@@ -192,23 +214,30 @@ margin: 3%;
   width: 42%;
 }
 .security-close-div{
-  display: inline-block;
+  display: grid;
+  box-sizing: border-box;
   border-top: 1px solid black;
   height: calc( (3 / 20) * 100%);
-  width: 100%;
-  margin: auto;
-  text-align: right;
+  grid-template-columns: 4% 66% 10% 20%;
 }
 .security-close-div > button{
-
+  align-self: center;
+  background-color:  rgb(249, 250, 249);
+  border-radius: 5px;
+  border: 1px solid rgb(215, 215, 215);
+  box-shadow:  0 1px rgb(215, 215, 215);
+  padding: 5px;
 }
 .delete-security-btn{
-  margin: 0% 50% 0% 0%;
+ justify-self: start;
+ grid-column: 2;
 }
 .cancel-security-btn{
- margin:  1% 2% 0% 2%;
+  justify-self: center;
+
 }
 .save-security-btn{
-  margin: 0% 2% 0% 2%;
+  justify-self: center;
+
  
 }

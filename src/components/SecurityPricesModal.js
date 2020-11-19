@@ -76,12 +76,12 @@ export default function SecurityPricesModal(props) {
                     <div className="prices-div">
                         {myPrices.map((price, index) => (
                             <div key={index} className="price-row">
-                                <p
+                                <p suppressContentEditableWarning={true}
                                     onKeyPress={(e) => datesOnly(e)}
                                     contentEditable={editable && clickedPrice.price === price}
                                     onInput={(e) => handleDateInput(e, price, e.target.innerText)}
                                 >{price.date}</p>
-                                <p
+                                <p suppressContentEditableWarning={true}
                                     onKeyPress={(e) => numbersOnly(e)}
                                     contentEditable={editable && clickedPrice.price === price}
                                     onInput={(e) => handleAmountInput(e, price, e.target.innerText)}

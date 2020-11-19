@@ -1,6 +1,7 @@
 .App {
-  /* display: grid;
-  justify-content: space-around; */
+  font-family: 'Raleway', sans-serif;  
+  font-variant-numeric: oldstyle-nums;
+
 }
 
 .App-logo {

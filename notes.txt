@@ -20,3 +20,25 @@ Currently a grid, try as a flexbox:
 Personal Notes:
 Use box-sizing: border-box to prevent padding
 from expanding the size of elements 
+
+
+Color Notes: (obtained using digital color meter mac app)
+    Green Buttons:      rgb(0, 181, 50)     
+    Gray Buttons:       rgb(249, 250, 249)
+
+    Blue Text:          rgb(0, 162, 210)
+    Orange Text/Bar:    rgb(249,80,51)
+
+    Gray Text:          rgb(120, 120, 120)
+
+    Gray Top-Bar &           
+    Dark-Gray(50):      rgb(57, 57, 57)
+
+    All Borders:        rgb(215, 215, 215)
+
+    Fonts: 
+        font-variant-numeric: oldstyle-nums;
+
+
+
+        

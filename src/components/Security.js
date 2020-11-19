@@ -21,8 +21,8 @@ export default function Security(props) {
             <h3>{security.name}</h3>
             <p>{security.ISIN}</p>
             <p>{security.country}</p>
-            <p className="prices-link" onClick={() => setPricesModal(true)}>Prices</p>
-            <p className="edit-link" onClick={() => setEditModal(true)}>Edit</p>
+            <button className="prices-link" onClick={() => setPricesModal(true)}>Prices</button>
+            <button className="edit-link" onClick={() => setEditModal(true)}>Edit</button>
             <SecurityPricesModal show={isPricesModalOpen}
                 security={security}
                 addPrice={props.addPrice}
