@@ -7,6 +7,9 @@ export default function SecuritiesList() {
 
     // initialize securities with securites.json 
     const [securities, setSecurities] = useState([...Securities])
+    // current countries, if we only want to add countries 
+    // that already exist in our data 
+    //const countries = securities.map(sec => sec.country)
 
     //define add modal open and close
     const [isAddModalOpen, setAddModal] = useState(false)
@@ -18,6 +21,7 @@ export default function SecuritiesList() {
     //add Security
     const addASecurity = (e, newSecurity) => {
         e.preventDefault()
+        console.log(newSecurity)
         setSecurities([...securities, newSecurity])
         closeAddModal()
     }

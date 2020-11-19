@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function SecurityModal(props) {
 
@@ -9,6 +9,24 @@ export default function SecurityModal(props) {
         country: `${props.children.country}`,
         prices: []
     })
+    // Depending on Edit or Add, change the form data
+    useEffect(() => {
+        if (props.showEdit) {
+            setFormData({
+                name: `${props.children.name}`,
+                ISIN: `${props.children.ISIN}`,
+                country: `${props.children.country}`,
+                prices: []
+            })
+        } else {
+            setFormData({
+                name: `${props.children.name}`,
+                ISIN: `${props.children.ISIN}`,
+                country: `${props.children.country}`,
+                prices: []
+            })
+        }
+    }, [props])
 
     const setValue = (key, value) => {
         setFormData({ ...formData, [key]: value })
@@ -34,17 +52,18 @@ export default function SecurityModal(props) {
             deleteButton: 'unset'
         }
         closeModal = (() => props.closeEditModal())
-        addOrEdit = ((e) => editAndClose(e, formData, props.children ))
+        addOrEdit = ((e) => editAndClose(e, formData, props.children))
     } else if (props.showAdd === true) {
         display = {
             title: 'Add Security',
             deleteButton: 'none',
         }
-        console.log("ran")
         closeModal = (() => props.closeAddModal())
         addOrEdit = ((e) => props.addASecurity(e, formData))
     }
 
+    // hard coded countries, could alternatively be passed down from Securities List
+    // or imported directly from json file, API, etc
     const countries = [
         'Sweden',
         'Finland',
@@ -65,7 +84,7 @@ export default function SecurityModal(props) {
             <div className="modal-content">
                 <div className="top-security-wrapper">
                     <header>{display.title}</header>
-                    <form className="security-form" noValidate>
+                    <form className="security-form" id="my-form" onSubmit={(e) => addOrEdit(e)}>
                         <div className="name-input">
                             <label htmlFor="name">Name</label>
                             <br />
@@ -81,24 +100,24 @@ export default function SecurityModal(props) {
                         <div className="country-input">
                             <label htmlFor="country">Country</label>
                             <br />
-                            <select name="countries" id="countries" value={formData.country}
+                            <select required name="countries" id="countries" value={formData.country}
                                 onChange={(e) => setValue("country", e.target.value)}>
+                                <option value=""></option>
                                 {countries.map((country, id) => (
                                     <option key={id} value={country}>{country}</option>
                                 ))}
                             </select>
                         </div>
-
                     </form>
 
                 </div>
                 <div className="security-close-div">
-                    <p className="delete-security-btn"
+                    <button className="delete-security-btn"
                         style={{ display: `${display.deleteButton}` }}
-                        onClick={(e) => deleteAndClose(e, props.children)}>Delete</p>
-                    <p className="cancel-security-btn" onClick={closeModal}>Cancel</p>
-                    <p className="save-security-btn"
-                        onClick={(e) => addOrEdit(e)}>Save</p>
+                        onClick={(e) => deleteAndClose(e, props.children)}>Delete</button>
+                    <button className="cancel-security-btn" onClick={closeModal}>Cancel</button>
+                    <button className="save-security-btn" type="submit" form="my-form"
+                        >Save</button>
                 </div>
             </div>
         </div>
