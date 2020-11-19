@@ -163,7 +163,7 @@ code {
   padding: 5%;
 }
 .security-form {
-  margin: 5% 0 2% 0;
+  margin: 3% 0 2% 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -175,6 +175,7 @@ code {
   width: 50%;
 }
 .country-input{
+  margin-top: 3%;
   flex-grow: 1;
 }
 #countries{
