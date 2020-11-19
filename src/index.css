@@ -131,6 +131,16 @@ code {
   grid-template-columns: 5% 40% 25% 15% 15%;
   grid-auto-rows: 100%;
 }
+.add-price-row{
+margin: 3%;
+}
+.add-price-row > input{
+  margin-left: 4%;
+  width: 30%;
+}
+.add-price-row > button {
+  margin-left: 2%;
+}
 .price-row > p, .price-row > button{
   align-self: center;
   justify-self: start;

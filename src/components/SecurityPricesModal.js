@@ -3,6 +3,11 @@ import React, { useState, useEffect } from 'react';
 export default function SecurityPricesModal(props) {
 
     const [editable, setEditable] = useState(false)
+    const [newPrice, setNewPrice] = useState({
+        date: '',
+        amount: 0
+    })
+    const [addPriceDisplay, setAddPriceDisplay] = useState(false)
     const [clickedPrice, setClickPrice] = useState({
         price: {},
         style: {
@@ -30,7 +35,13 @@ export default function SecurityPricesModal(props) {
             return false;
         }
     }
-    //submits that array when the modal is closed 
+    const datesOnly = (e) => {
+        if (e.charCode < 47 || e.charCode > 57) {
+            e.preventDefault()
+            return false;
+        }
+    }
+
     const handleClose = (e) => {
         props.editPrice(e, props.security, myPrices)
         props.addPrice(e, props.security, myPrices)
@@ -47,6 +58,11 @@ export default function SecurityPricesModal(props) {
         setEditable(true)
     }
 
+    const handleAddPrice = (e) => {
+        props.addPrice(e, props.security, newPrice)
+        setAddPriceDisplay(false)
+    }
+
     if (props.show === false) {
         return null;
     }
@@ -59,7 +75,7 @@ export default function SecurityPricesModal(props) {
                         {myPrices.map((price, index) => (
                             <div key={index} className="price-row">
                                 <p
-                                    onKeyPress={(e) => numbersOnly(e)}
+                                    onKeyPress={(e) => datesOnly(e)}
                                     contentEditable={editable && clickedPrice.price === price}
                                     onInput={(e) => handleDateInput(e, price, e.target.innerText)}
                                 >{price.date}</p>
@@ -73,7 +89,24 @@ export default function SecurityPricesModal(props) {
                             </div>
                         ))}
                     </div>
-                    <button onClick={(e) => handleClose(e)}>+ Add</button>
+                    {addPriceDisplay === false ?
+                        <button onClick={() => setAddPriceDisplay(true)}>+ Add</button>
+                        :
+                        <div className="add-price-row">
+                            <input
+                                placeholder="date"
+                                onKeyPress={(e) => datesOnly(e)}
+                                contentEditable={true}
+                                onChange={(e) => setNewPrice({ ...newPrice, date: e.target.value })}
+                            ></input>
+                            <input
+                                placeholder="price"
+                                onKeyPress={(e) => numbersOnly(e)}
+                                contentEditable={true}
+                                onChange={(e) => setNewPrice({ ...newPrice, amount: e.target.value })}                                ></input>
+                            <button onClick={(e) => handleAddPrice(e)}>+ Add</button>
+                        </div>
+                    }
                 </div>
                 <div className="prices-close-div">
                     <button className="prices-close-btn" onClick={(e) => handleClose(e)}>Close</button>

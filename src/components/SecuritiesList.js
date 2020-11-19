@@ -45,9 +45,9 @@ export default function SecuritiesList() {
 
     // *** PRICES *** //
     //add Prices to a security 
-    const addPrice = (e, selectedSecurity, newPrices) => {
+    const addPrice = (e, selectedSecurity, newPrice) => {
         e.preventDefault()
-        selectedSecurity.prices = newPrices
+        selectedSecurity.prices.push(newPrice)
         setSecurities([...securities ])
     }
     //delete Price for a security
