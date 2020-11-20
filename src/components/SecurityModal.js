@@ -9,7 +9,7 @@ export default function SecurityModal(props) {
         country: `${props.children.country}`,
         prices: []
     })
-    // Depending on Edit or Add, change the form data
+    // Depending on Edit or Add, keeps form data current
     useEffect(() => {
         if (props.showEdit) {
             setFormData({
@@ -43,6 +43,7 @@ export default function SecurityModal(props) {
         props.closeEditModal()
     }
 
+    //changees display based on clicking Add or Edit
     let display = {}
     let addOrEdit = null;
     let closeModal = null;
