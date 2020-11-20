@@ -21,7 +21,7 @@ difficult. Since the sample design did not match the wireframe deliverables to b
 decisions myself.
     Given more time, I would have loved to change a few things. Firstly, I would like to understand the design/styling requirements better and add more 
 color and design. Secondly, I would fix a few small functional bugs, such as preventing a user from submitting an empty price, as well as highlighting 
-the current price being edited so it is more clear. I have also considered instead of hard-coding an array of countries to map over the countries in my 
+the current price being edited so it is more clear. Given more time I would love to make the application 100% mobile friendly. I have also considered instead of hard-coding an array of countries to map over the countries in my 
 json file, but this seemed unecessary at the time. Most of all, I would like to change the state management from useState functional components to a Redux store. Beginning this project I did not realize 
 how much state would play a part in it. Though it is not overwhelming, the use of useState becomes a little cluttering and I would like to utilize
 React's state management Redux to fix this and maybe even clean up some functionality. 
