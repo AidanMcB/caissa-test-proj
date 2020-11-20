@@ -13,3 +13,7 @@ Run the command:
 to begin program 
 
 It should automatically open a browser tab at localhost:3000 with the main page loaded 
+
+
+Link to the trello board where I did my project planning
+https://trello.com/b/5jzKU6cZ/caissa-test-proj
