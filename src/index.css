@@ -17,8 +17,8 @@ code {
   --sec-modal-width: (2/3);
   --price-model-scroll: (1/5);
 }
-/* Main Page */
-/* Securities List */
+  /* Main Page */
+  /* Securities List */
 .securities-list{
   display: grid;
   grid-template-columns:  5% 5% 80% 5% 5%;
@@ -38,7 +38,7 @@ code {
   border-radius: 5px;
 
 }
-/* Security Card */
+    /* Security Card */
 .security-card {
   justify-self: stretch;
   border: 1px solid rgb(215, 215, 215);
@@ -49,11 +49,12 @@ code {
   grid-template-rows: 25% 25% 25% 25%
 }
 .security-card > h3 {
+  font-weight: 500;
+  font-size: 1.4em;
   grid-column: 2;
   grid-row: 2;
   justify-self: start;
   margin: 0;
-  /* color: rgb(10, 3, 3); */
 }
 .security-card > p {
   align-self: center;
@@ -84,7 +85,6 @@ code {
   grid-row: 3;
   justify-self: start;
   padding: 5px;
-
   background-color:  rgb(249, 250, 249);
   border-radius: 5px;
   border: 1px solid rgb(215, 215, 215);
@@ -96,18 +96,16 @@ code {
 }
 /* Security Modal and Prices Modal */
 .prices-modal, .security-modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed; 
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: hidden; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
 }
-
-/* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -148,8 +146,16 @@ code {
   grid-template-columns: 100%;
   grid-auto-rows: 17%;
 }
+.price-row > button{
+  padding: 5px;
+  background-color:  rgb(249, 250, 249);
+  border-radius: 5px;
+  border: 1px solid rgb(215, 215, 215);
+  box-shadow:  0 1px rgb(215, 215, 215);
+}
 .price-row {
   display: grid;
+  color: rgb(120, 120, 120);
   grid-template-columns: 5% 40% 25% 15% 15%;
   grid-auto-rows: 100%;
 }
@@ -160,8 +166,17 @@ margin: 3%;
   margin-left: 4%;
   width: 30%;
 }
-.add-price-row > button {
-  margin-left: 2%;
+.add-price-row > button, .conditional-btn {
+   margin-left: 2%;
+  padding: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  width: 12.5%;
+  background-color: rgb(0, 181, 50);
+  color: white;
+  border: none;
+  border-radius: 5px;
+
 }
 .price-row > p, .price-row > button{
   align-self: center;
@@ -193,6 +208,7 @@ margin: 3%;
   height: calc( 17 / 20 * 100%);
   box-sizing: border-box;
   padding: 5%;
+  color: rgb(120, 120, 120);
 }
 .security-form {
   margin: 3% 0 2% 0;

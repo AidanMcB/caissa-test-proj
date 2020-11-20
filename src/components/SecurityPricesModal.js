@@ -92,16 +92,18 @@ export default function SecurityPricesModal(props) {
                         ))}
                     </div>
                     {addPriceDisplay === false ?
-                        <button onClick={() => setAddPriceDisplay(true)}>+ Add</button>
+                        <button className="conditional-btn" onClick={() => setAddPriceDisplay(true)}>+ Add</button>
                         :
                         <div className="add-price-row">
                             <input
+                                required
                                 placeholder="date"
                                 onKeyPress={(e) => datesOnly(e)}
                                 contentEditable={true}
                                 onChange={(e) => setNewPrice({ ...newPrice, date: e.target.value })}
                             ></input>
                             <input
+                                required
                                 placeholder="price"
                                 onKeyPress={(e) => numbersOnly(e)}
                                 contentEditable={true}
