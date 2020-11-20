@@ -1,6 +1,12 @@
 .App {
-  /* display: grid;
-  justify-content: space-around; */
+  font-family: 'Raleway', sans-serif;  
+  font-variant-numeric: oldstyle-nums;
+
+}
+.App > h1 {
+  margin: 6% 0% 1% 10%;
+  font-weight: 400;
+  font-size: 1.2em;
 }
 
 .App-logo {

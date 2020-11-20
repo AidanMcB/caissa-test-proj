@@ -46,9 +46,11 @@ export default function SecurityPricesModal(props) {
         props.editPrice(e, props.security, myPrices)
         props.addPrice(e, props.security, myPrices)
         props.closePricesModal(e)
+        setAddPriceDisplay(false)
     }
 
     const handleEditClick = (price) => {
+        setAddPriceDisplay(false)
         setClickPrice({
             price: price,
             style: {
@@ -74,12 +76,12 @@ export default function SecurityPricesModal(props) {
                     <div className="prices-div">
                         {myPrices.map((price, index) => (
                             <div key={index} className="price-row">
-                                <p
+                                <p suppressContentEditableWarning={true}
                                     onKeyPress={(e) => datesOnly(e)}
                                     contentEditable={editable && clickedPrice.price === price}
                                     onInput={(e) => handleDateInput(e, price, e.target.innerText)}
                                 >{price.date}</p>
-                                <p
+                                <p suppressContentEditableWarning={true}
                                     onKeyPress={(e) => numbersOnly(e)}
                                     contentEditable={editable && clickedPrice.price === price}
                                     onInput={(e) => handleAmountInput(e, price, e.target.innerText)}
@@ -90,16 +92,18 @@ export default function SecurityPricesModal(props) {
                         ))}
                     </div>
                     {addPriceDisplay === false ?
-                        <button onClick={() => setAddPriceDisplay(true)}>+ Add</button>
+                        <button className="conditional-btn" onClick={() => setAddPriceDisplay(true)}>+ Add</button>
                         :
                         <div className="add-price-row">
                             <input
+                                required
                                 placeholder="date"
                                 onKeyPress={(e) => datesOnly(e)}
                                 contentEditable={true}
                                 onChange={(e) => setNewPrice({ ...newPrice, date: e.target.value })}
                             ></input>
                             <input
+                                required
                                 placeholder="price"
                                 onKeyPress={(e) => numbersOnly(e)}
                                 contentEditable={true}

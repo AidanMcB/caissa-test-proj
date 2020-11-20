@@ -56,7 +56,7 @@ export default function SecurityModal(props) {
     } else if (props.showAdd === true) {
         display = {
             title: 'Add Security',
-            deleteButton: 'none',
+            deleteButton: 'hidden',
         }
         closeModal = (() => props.closeAddModal())
         addOrEdit = ((e) => props.addASecurity(e, formData))
@@ -113,7 +113,7 @@ export default function SecurityModal(props) {
                 </div>
                 <div className="security-close-div">
                     <button className="delete-security-btn"
-                        style={{ display: `${display.deleteButton}` }}
+                        style={{ visibility: `${display.deleteButton}` }}
                         onClick={(e) => deleteAndClose(e, props.children)}>Delete</button>
                     <button className="cancel-security-btn" onClick={closeModal}>Cancel</button>
                     <button className="save-security-btn" type="submit" form="my-form"
