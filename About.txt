@@ -1,0 +1,30 @@
+    This project was designed to meet the requirements provided by Caissa, including a user story that allows adding/deleting/editing securities
+as well as prices. I decided to use the React framework as I am more familiar with it than Angular at this time. The project uses a .json file 
+containing an array of objects; that data includes the securities and their prices and properties. Since the project is entirely on the front end and 
+uses no database or backend server, this file was imported into SecuritiesList.js directly and passed down. 
+    I decided to use all functional components to avoid the clutter of referencing self with the this keyword and creating binding where necessary. I 
+used the useState hook to create state in these functional components and the useEffect hook to update the components when their parent's data was 
+changed. From the top down, the structure of the project goes from App that renders the SecuritiesList, and the SecuritiesList renders each 
+SecurtiyCard. The SecuritiesList also has the ability to render the SecurityModal, which can be set to Add or Edit mode, allowing the user to either add 
+a new security, or edit one, passing the existing information to the modal to be pre-filled. I used a conditional rendering of some display attributes
+inside the security modal that are set based on whether the modal is rendered from the edit button or the add button.
+    From each SecurityCard, a SecurityPricesModal can also be rendered. From this modal, a user can see all the prices for that security, add a price, 
+edit a price, or delete a price. When a user does any of these actions, the state for the list of securities stored in SecuritiesList is altered. This
+way, it persists to all the child components. Child components use the useEffect hook to stay up to date based off the props their parents send.
+    I used mostly CSS grid to establish the design and sizing of the application. Since the wireframe was written on a grid paper, I assigned 
+value of 20px to each square and designed the application to those proportions. This can be seen in the CSS files where I use the calc() function 
+based of vh/vw. By using CSS grid, I could decided exactly how much of the entire screen my elements would take up, as well as determine where the items 
+within would exist. For example, a SecurityCard has four rows for equal spacing, but only row 2 and 3 are populated. The modals are built using only 
+CSS and HTML with conditional rendering based on the state established in their parent components. 
+    For the color, I used the built in mac tool 'DigitalColorMeter' and grabbed the rgb values from the sample Design. I found the coloring/design the most 
+difficult. Since the sample design did not match the wireframe deliverables to be built, I was under the impression that I was to make some of those styling 
+decisions myself.
+    Given more time, I would have loved to change a few things. Firstly, I would like to understand the design/styling requirements better and add more 
+color and design. Secondly, I would fix a few small functional bugs, such as preventing a user from submitting an empty price, as well as highlighting 
+the current price being edited so it is more clear. I have also considered instead of hard-coding an array of countries to map over the countries in my 
+json file, but this seemed unecessary at the time. Most of all, I would like to change the state management from useState functional components to a Redux store. Beginning this project I did not realize 
+how much state would play a part in it. Though it is not overwhelming, the use of useState becomes a little cluttering and I would like to utilize
+React's state management Redux to fix this and maybe even clean up some functionality. 
+
+Overall, this was a great experience and I really enjoyed the opportunity to workthrough these deliverables. I plan to continue working on this on my 
+own time just to perfect it and add some things. 
