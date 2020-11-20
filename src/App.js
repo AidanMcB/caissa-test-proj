@@ -2,8 +2,6 @@ import './App.css';
 // Components
 import SecuritiesList from './components/SecuritiesList'
 
-
-
 function App() {
 
   return (

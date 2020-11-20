@@ -10,61 +10,61 @@ export default function SecurityPricesModal(props) {
     const [addPriceDisplay, setAddPriceDisplay] = useState(false)
     const [clickedPrice, setClickPrice] = useState({
         price: {},
-        style: {
-            color: ''
-        }
     })
-    //consider adding useEffect to rerender updated prices
+
     const [myPrices, setPrices] = useState(props.children.prices)
     useEffect(() => {
         setPrices(props.children.prices)
     }, [props])
 
-    //updates the entire array of prices
+    //replaces selected date with new date
     const handleDateInput = (e, selectedPrice, newDate) => {
         let priceIndex = myPrices.findIndex(price => myPrices.indexOf(price) === myPrices.indexOf(selectedPrice))
         myPrices[priceIndex].date = newDate
     }
+    //replaces selected amount with new amount
     const handleAmountInput = (e, selectedPrice, newAmount) => {
         let priceIndex = myPrices.findIndex(price => myPrices.indexOf(price) === myPrices.indexOf(selectedPrice))
         myPrices[priceIndex].amount = parseInt(newAmount)
     }
+    //validation for only numbers in amount
     const numbersOnly = (e) => {
         if (e.charCode < 48 || e.charCode > 57) {
             e.preventDefault()
             return false;
         }
     }
+    //validation for only numbers and / in date
     const datesOnly = (e) => {
         if (e.charCode < 47 || e.charCode > 57) {
             e.preventDefault()
             return false;
         }
     }
-
+    
+    //updates the state in the parent component when modal is closed
     const handleClose = (e) => {
         props.editPrice(e, props.security, myPrices)
-        props.addPrice(e, props.security, myPrices)
         props.closePricesModal(e)
         setAddPriceDisplay(false)
     }
 
+    //selects price to be edited, only one can be edited at a time
     const handleEditClick = (price) => {
         setAddPriceDisplay(false)
         setClickPrice({
             price: price,
-            style: {
-                color: "blue"
-            }
         })
         setEditable(true)
     }
 
+    //passed the new price to the parent and closes the input
     const handleAddPrice = (e) => {
         props.addPrice(e, props.security, newPrice)
         setAddPriceDisplay(false)
     }
 
+    //only show this component if it is set to show = true
     if (props.show === false) {
         return null;
     }
@@ -107,7 +107,8 @@ export default function SecurityPricesModal(props) {
                                 placeholder="price"
                                 onKeyPress={(e) => numbersOnly(e)}
                                 contentEditable={true}
-                                onChange={(e) => setNewPrice({ ...newPrice, amount: e.target.value })}                                ></input>
+                                onChange={(e) => setNewPrice({ ...newPrice, amount: e.target.value })}
+                            ></input>
                             <button onClick={(e) => handleAddPrice(e)}>+ Add</button>
                         </div>
                     }
